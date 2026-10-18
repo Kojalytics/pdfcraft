@@ -4,7 +4,7 @@
 //! so agents and scripts are unaffected. A string without a translation is shown in English, so
 //! coverage can grow incrementally.
 //!
-//! The system is the one PhotoCraft uses (`photocraft/crates/ui-egui/src/i18n`), so catalogs and
+//! The system is the one PhotoKoja uses (`photocraft/crates/ui-egui/src/i18n`), so catalogs and
 //! habits carry over between the two apps.
 //!
 //! # Adding a language
@@ -396,7 +396,7 @@ fn detect_system_lang() -> Lang {
 }
 
 thread_local! {
-    // Per thread, as in PhotoCraft: independent app and test threads (kittest harnesses run in
+    // Per thread, as in PhotoKoja: independent app and test threads (kittest harnesses run in
     // parallel) must not change each other's drawing language.
     static CURRENT: Cell<Lang> = const { Cell::new(Lang::EN) };
 }
@@ -794,7 +794,7 @@ mod tests {
     #[test]
     fn missing_ocr_models_messages_are_translated() {
         let error = pdfcraft_engine::ocr::OcrError::NoModels.to_string();
-        let notice = "Text recognition isn't installed: its model files are missing. Reinstall PdfCraft, or set PDFCRAFT_MODELS to the folder that holds them.";
+        let notice = "Text recognition isn't installed: its model files are missing. Reinstall PdfKoja, or set PDFCRAFT_MODELS to the folder that holds them.";
         assert!(include_str!("../ocr_ui.rs").contains(notice), "keep in step with ocr_ui.rs");
         for code in ["bg", "cs", "de", "es", "fr", "hu", "ja", "ru", "te", "uk", "zh-hans", "zh-hant"] {
             let lang = Lang::from_code(code).expect("registered");
@@ -1590,7 +1590,7 @@ mod tests {
         }
     }
 
-    /// Like PhotoCraft's complete-catalog gates, derive coverage from the UI, not another language.
+    /// Like PhotoKoja's complete-catalog gates, derive coverage from the UI, not another language.
     #[test]
     fn simplified_chinese_covers_commands_and_catalogue() {
         let zh = Lang::from_code("zh-hans").expect("zh-hans registered");
@@ -2297,7 +2297,7 @@ mod tests {
             "Virš kiekvieno žodžio prideda nematomą tekstą; puslapio vaizdas nesikeičia"
         );
         assert!(
-            tr(lt, "The fonts PdfCraft writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.")
+            tr(lt, "The fonts PdfKoja writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.")
                 .contains("visose PDF žiūryklėse")
         );
     }
@@ -3239,7 +3239,7 @@ mod tests {
         // "حفظ باسم…" as typed; the ellipsis ends the phrase on the left.
         assert_eq!(tr(ar, "Save as…"), "…باسم حفظ");
         // Latin names keep their own direction inside the phrase.
-        assert_eq!(tr(ar, "About PdfCraft"), "PdfCraft حول");
+        assert_eq!(tr(ar, "About PdfKoja"), "PdfKoja حول");
         // A caption's colon stays beside the widget on its right.
         assert_eq!(tr(ar, "Name:"), "الاسم:");
         assert_eq!(tr(ar, "Issued by: "), "عن صادرة: ");

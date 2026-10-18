@@ -1,5 +1,5 @@
 //! Vector icons: embedded Lucide SVGs, recoloured to white, rasterized by egui_extras at the exact
-//! on-screen pixel size, and tinted per use (PhotoCraft lesson: never use Unicode glyphs as icons).
+//! on-screen pixel size, and tinted per use (PhotoKoja lesson: never use Unicode glyphs as icons).
 
 use std::sync::OnceLock;
 
@@ -21,7 +21,7 @@ pub fn exists(name: &str) -> bool {
 }
 
 fn source(name: &str) -> egui::ImageSource<'static> {
-    // PdfCraft caches an unknown name under the resolved fallback name.
+    // PdfKoja caches an unknown name under the resolved fallback name.
     white_icons().source(white_icons().canonical_name(name).unwrap_or("square"))
 }
 
