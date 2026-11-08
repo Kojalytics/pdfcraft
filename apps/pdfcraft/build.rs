@@ -23,6 +23,7 @@ fn main() {
         .set_icon_with_id("../../assets/app-icon/pdfcraft-document.ico", "2")
         .set_manifest(windows_manifest::WINDOWS_MANIFEST)
         .set("ProductName", "PdfKoja")
+        .set("CompanyName", "Kojalytics")
         .set("FileDescription", "PdfKoja PDF workbench")
         .set("LegalCopyright", "Copyright (c) the PdfKoja contributors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "pdfcraft.exe")

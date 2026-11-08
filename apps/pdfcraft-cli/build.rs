@@ -14,6 +14,7 @@ fn main() {
     }
     let mut res = winresource::WindowsResource::new();
     res.set("ProductName", "PdfKoja")
+        .set("CompanyName", "Kojalytics")
         .set("FileDescription", "PdfKoja command-line tool")
         .set("LegalCopyright", "Copyright (c) the PdfKoja contributors. MIT OR Apache-2.0.")
         .set("OriginalFilename", "pdfcraft-cli.exe")
